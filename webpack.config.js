@@ -20,11 +20,11 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-],
+  ],
   optimization: {
     minimize: true,
     minimizer: [new TerserPlugin({
-      test:  /\.min\.js$/i,
+      test: /\.min\.js$/i,
       terserOptions: {
         extractComments: 'all',
         compress: {
