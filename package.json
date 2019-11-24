@@ -10,7 +10,7 @@
   "scripts": {
     "test": "jest --coverage",
     "library": "webpack",
-    "prepublish": "npm run library",
+    "prepublish": "npm run library && npm version patch",
     "dev": "webpack-dev-server --config webpack.config.dev.js"
   },
   "keywords": [],
