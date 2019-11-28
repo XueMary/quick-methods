@@ -101,10 +101,14 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _String__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _Number__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 
 
+
+console.log(_String__WEBPACK_IMPORTED_MODULE_0__["default"].insertAtCursor)
 /* harmony default export */ __webpack_exports__["default"] = ({
-  ..._String__WEBPACK_IMPORTED_MODULE_0__["default"]
+  ..._String__WEBPACK_IMPORTED_MODULE_0__["default"],
+  ..._Number__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 
 /***/ }),
@@ -114,10 +118,13 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _copy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _insertAtCursor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  copy: _copy__WEBPACK_IMPORTED_MODULE_0__["default"]
+  copy: _copy__WEBPACK_IMPORTED_MODULE_0__["default"],
+  insertAtCursor: _insertAtCursor__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 
 /***/ }),
@@ -164,6 +171,56 @@ function copy(string) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (copy);
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+// 常用与点击按钮复制文本 
+/**
+ * 
+ * @param {eleemnt} element 
+ * @param {string} target 
+ * @param {string} value 
+ */
+function insertAtCursor(element, target, value) {
+  if (element.selectionStart || element.selectionStart === 0) {
+    var startPos = element.selectionStart;
+    var endPos = element.selectionEnd;
+    target =
+      target.substring(0, startPos) +
+      value +
+      target.substring(endPos, target.length);
+    setTimeout(() => {
+      element.focus();
+      element.setSelectionRange(
+        endPos + value.length,
+        endPos + value.length
+      );
+    });
+  } else {
+    target += value;
+    element.focus();
+  }
+  return target;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (insertAtCursor);
+
+/***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// import numeration from './numeration'
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  // ...numeration
+});
 
 /***/ })
 /******/ ])["default"];

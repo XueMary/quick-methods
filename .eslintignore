@@ -3,3 +3,4 @@ webpack.config.js
 coverage
 dist
 node_modules
+test
