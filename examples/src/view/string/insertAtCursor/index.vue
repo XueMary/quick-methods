@@ -1,5 +1,8 @@
 <template>
   <div>
+    <h1>insertAtCursor</h1>
+    <p>插入文本, 在光标处插入指定的文本</p>
+    <div>示例:</div>
     <input type="textarea" id="textarea"/>
     <button @click="handle">xue</button>
   </div>
