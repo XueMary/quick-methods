@@ -25,3 +25,22 @@ test
 自测功能示例
 
 examples
+
+
+## example
+
+```
+import {copy, insetAtCursor} from 'quick-models
+copy
+
+copy(string)
+
+
+insetAtCursor
+
+var textarea = document.querySelector('#textarea')
+var target = textarea.value
+let string = 'hello'
+textarea.value = insetAtCursor(textarea, target, string)
+
+```
