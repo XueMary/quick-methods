@@ -105,7 +105,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-console.log(_String__WEBPACK_IMPORTED_MODULE_0__["default"].insertAtCursor)
 /* harmony default export */ __webpack_exports__["default"] = ({
   ..._String__WEBPACK_IMPORTED_MODULE_0__["default"],
   ..._Number__WEBPACK_IMPORTED_MODULE_1__["default"]
@@ -216,10 +215,50 @@ function insertAtCursor(element, target, value) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-// import numeration from './numeration'
+/* harmony import */ var _price__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  // ...numeration
+  ..._price__WEBPACK_IMPORTED_MODULE_0__["default"]
+});
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// 加 ¥
+function formatPrice(price, symbol = "¥ ") {
+  return symbol + this.filterPrice(price)
+}
+// 分转成元
+//小数位为0直接显示整数，有一位显示一位，有多位显示两位
+function filterPrice(data) {
+  if(typeof data === 'string'){
+    data = Number(data)
+  }
+  if (typeof data !== 'number' || isNaN(data) === true) {
+    console.error('Please enter number type')
+    return '0'
+  }
+  var yuan = Number(data / 100);
+  var fixed0 = yuan.toFixed(0);
+  var fixed1 = yuan.toFixed(1);
+  var fixed2 = yuan.toFixed(2);
+
+  if (Number(fixed0) == Number(fixed1) && Number(fixed1) == Number(fixed2)) {
+    return fixed0;
+  } else if (Number(fixed0) != Number(fixed1) && Number(fixed1) == Number(fixed2)) {
+    return fixed1;
+  } else {
+    return fixed2;
+  }
+}
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  formatPrice,
+  filterPrice
 });
 
 /***/ })
