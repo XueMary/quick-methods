@@ -230,7 +230,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 // 加 ¥
 function formatPrice(price, symbol = "¥ ") {
-  return symbol + this.filterPrice(price)
+  return symbol + filterPrice(price)
 }
 // 分转成元
 //小数位为0直接显示整数，有一位显示一位，有多位显示两位
