@@ -38,8 +38,8 @@ module.exports = {
     contentBase: path.join(__dirname, '/examples/dist'),
     compress: true,
     port: 9000,
-    hot:true,
-    open:true
+    hot: true,
+    open: true
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
