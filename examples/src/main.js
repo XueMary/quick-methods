@@ -20,6 +20,10 @@ Vue.directive('highlight', function (el) {  //注意这里是highlight；没有�
     })
 })
 
+Vue.config.errorHandler = function (err, vm, info){
+  console.error(err.message, 99)
+}
+
 
 
 new Vue({

@@ -104,6 +104,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Number__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _Base__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6);
 /* harmony import */ var _Dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(7);
+/* harmony import */ var _Array__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(9);
+
 
 
 
@@ -114,6 +116,7 @@ __webpack_require__.r(__webpack_exports__);
   ..._Number__WEBPACK_IMPORTED_MODULE_1__["default"],
   ..._Base__WEBPACK_IMPORTED_MODULE_2__["default"],
   ..._Dom__WEBPACK_IMPORTED_MODULE_3__["default"],
+  ..._Array__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 
 /***/ }),
@@ -298,8 +301,21 @@ function debounce(fn, time) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _scroll__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
 
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  bindScroll: _scroll__WEBPACK_IMPORTED_MODULE_0__["default"]
+});
+
+/***/ }),
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
 
 function loadFn(fn) {
   let loading = false;
@@ -314,7 +330,11 @@ function loadFn(fn) {
   return load;
 }
 
-async function scrollShare(el, fn, diff = 100) {
+async function scrollShare(el, fn, busy, diff = 100) {
+  if(busy===true){
+    return 
+  }
+  console.log(busy, 99)
   let height = el.offsetHeight;
   let scrollTop = el.scrollTop;
 
@@ -331,9 +351,28 @@ function scrollHandle(sm = 20) {
 }
 let bindScroll = scrollHandle();
 
+/* harmony default export */ __webpack_exports__["default"] = (bindScroll);
+
+/***/ }),
+/* 9 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getObject", function() { return getObject; });
+function getObject(option, value, key = 'label'){
+  let obj = null
+  option.some(item=>{
+    if(item[key]===value){
+      obj = item
+      return true
+    }
+  })
+  return obj
+}
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  bindScroll
+  getObject
 });
 
 /***/ })

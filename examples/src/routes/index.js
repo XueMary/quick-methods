@@ -13,8 +13,32 @@ const routes = [
       index: '1'
     },
     children: [
-      { path: '/copy', meta: { title: 'copy', index: '1-1' }, component: () => import('../view/string/copy') },
-      { path: '/insertAtCursor', meta: { title: 'insertAtCursor', index: '1-2' }, component: () => import('../view/string/insertAtCursor') }
+      { path: '/copy', meta: { title: '复制', index: 'copy' }, component: () => import('../view/string/copy') },
+      { path: '/insertAtCursor', meta: { title: '插入', index: 'insertAtCursor' }, component: () => import('../view/string/insertAtCursor') }
+    ]
+  },
+  {
+    path: '/',
+    redirect: '/formatPrice',
+    component: emptyComponent,
+    meta: {
+      title: 'Number',
+      index: '2'
+    },
+    children: [
+      { path: '/formatPrice', meta: { title: '价格转换', index: 'formatPrice' }, component: () => import('../view/number/formatPrice') },
+    ]
+  },
+  {
+    path: '/',
+    redirect: '/scroll',
+    component: emptyComponent,
+    meta: {
+      title: 'Dom',
+      index: '3'
+    },
+    children: [
+      { path: '/scroll', meta: { title: '滚动加载', index: 'scroll' }, component: () => import('../view/dom/scroll') },
     ]
   },
 ]

@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h1>copy</h1>
-    <p>拷贝文本 将需要拷贝的文本传入函数中, 文本将被添加到 剪貼本中</p>
+    <h1>formatPrice</h1>
+    <p>将分为单位的价格转为元</p>
     <BaseTemplete>
       <template slot="title">示例:</template>
       <template slot="content">
-        <input type="text" :value="value" @input="v=>value=v.target.value">
-        <button @click="copy">点击复制文本</button>
+        <input type="text" v-model="value" >
+        <span>{{price}}</span>
       </template>
       <template slot="code">
         <MarkdownPreview :initialValue="readme" v-highlight="readme"/>
@@ -18,24 +18,24 @@
 <script>
 import BaseTemplete from "@/components/BaseTemplete";
 import { MarkdownPreview } from "vue-meditor";
-import { copy } from "library/index.js";
+import { formatPrice } from "library/index.js";
 import readme from "./index.md";
 export default {
   components: {
     BaseTemplete,
     MarkdownPreview
   },
+  computed: {
+    price(){
+      return formatPrice(this.value)
+    }
+  },
   data() {
     return {
-      value: "xue ji hong copy method",
+      value: 1000,
       readme
     };
   },
-  methods: {
-    copy() {
-      copy(this.value);
-    }
-  }
 };
 </script>
 
