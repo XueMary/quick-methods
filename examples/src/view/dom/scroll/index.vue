@@ -36,8 +36,8 @@ export default {
     };
   },
   methods: {
+    // 请求
     getRequest() {
-      console.log(11111)
       let len = this.arrs.length;
       for (var i = len; i < len+20; i++) {
         this.arrs.push(i);
