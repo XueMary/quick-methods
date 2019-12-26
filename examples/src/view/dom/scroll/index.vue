@@ -6,7 +6,7 @@
       <template slot="title">示例:</template>
       <template slot="content">
         <div>
-          <ul @scroll="scrls" class="scroll-box" ref="scroll">
+          <ul @scroll="scrls" class="scroll-box">
             <li v-for="item in arrs" :key="item">{{item}}</li>
           </ul>
         </div>
@@ -15,6 +15,7 @@
         <MarkdownPreview :initialValue="readme" v-highlight="readme"/>
       </template>
     </BaseTemplete>
+    <MarkdownPreview :initialValue="table" v-highlight="table"/>
   </div>
 </template>
 
@@ -23,6 +24,7 @@ import BaseTemplete from "@/components/BaseTemplete";
 import { MarkdownPreview } from "vue-meditor";
 import { bindScroll } from "library/index.js";
 import readme from "./index.md";
+import table from "./table.md";
 export default {
   components: {
     BaseTemplete,
@@ -31,6 +33,7 @@ export default {
   data() {
     return {
       readme,
+      table,
       arrs: [],
       busy: false
     };
@@ -51,8 +54,8 @@ export default {
         this.busy = false;
       }, 1000);
     },
-    scrls() {
-      bindScroll(this.$refs.scroll, this.loadMore, this.busy);
+    scrls(el) {
+      bindScroll(el.target, this.loadMore, this.busy);
     }
   },
   mounted() {
@@ -62,7 +65,7 @@ export default {
 </script>
 
 <style scoped>
-.scroll-box{
+.scroll-box {
   height: 377px;
   overflow-y: scroll;
 }

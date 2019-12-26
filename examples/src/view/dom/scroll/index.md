@@ -1,14 +1,14 @@
 ```
 <template>
   <div>
-    <ul @scroll="scrls" class="scroll-box" ref="scroll">
+    <ul @scroll="scrls" class="scroll-box">
       <li v-for="item in arrs" :key="item">{{item}}</li>
     </ul>
   </div>
 </template>
 
 <script>
-import { formatPrice } from "quick-methods";
+import { bindScroll } from "quick-methods";
 export default {
   data() {
     return {
@@ -32,8 +32,8 @@ export default {
         this.busy = false;
       }, 1000);
     },
-    scrls() {
-      bindScroll(this.$refs.scroll, this.loadMore, this.busy);
+    scrls(el) {
+      bindScroll(el.target, this.loadMore, this.busy);
     }
   },
   mounted() {

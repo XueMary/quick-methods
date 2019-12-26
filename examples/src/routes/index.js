@@ -26,7 +26,8 @@ const routes = [
       index: '2'
     },
     children: [
-      { path: '/formatPrice', meta: { title: '价格转换', index: 'formatPrice' }, component: () => import('../view/number/formatPrice') },
+      { path: '/formatPrice', meta: { title: '分转元', index: 'formatPrice' }, component: () => import('../view/number/formatPrice') },
+      { path: '/filterPriceToFen', meta: { title: '元转分', index: 'filterPriceToFen' }, component: () => import('../view/number/filterPriceToFen') },
     ]
   },
   {

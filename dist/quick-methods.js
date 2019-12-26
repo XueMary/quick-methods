@@ -241,6 +241,21 @@ __webpack_require__.r(__webpack_exports__);
 function formatPrice(price, symbol = "¥ ") {
   return symbol + filterPrice(price)
 }
+
+// 元转成分
+function filterPriceToFen(price, symbol) {
+  if(price===undefined){
+    return '0'
+  }
+  if(typeof price !== 'string'){
+    price = String(price)
+  }
+  if(symbol!==undefined){
+    price = price.replace(symbol, '')
+  }
+  return Number(price * 100).toFixed(0);
+}
+
 // 分转成元
 //小数位为0直接显示整数，有一位显示一位，有多位显示两位
 function filterPrice(data) {
@@ -267,7 +282,8 @@ function filterPrice(data) {
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   formatPrice,
-  filterPrice
+  filterPrice,
+  filterPriceToFen
 });
 
 /***/ }),
@@ -330,11 +346,10 @@ function loadFn(fn) {
   return load;
 }
 
-async function scrollShare(el, fn, busy, diff = 100) {
+async function scrollShare(el, fn, busy = false, diff = 100) {
   if(busy===true){
     return 
   }
-  console.log(busy, 99)
   let height = el.offsetHeight;
   let scrollTop = el.scrollTop;
 

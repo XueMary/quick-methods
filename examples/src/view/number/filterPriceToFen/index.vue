@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>formatPrice</h1>
-    <p>将分为单位的价格转为元</p>
+    <h1>filterPriceToFen</h1>
+    <p>将元为单位的价格转为分</p>
     <BaseTemplete>
       <template slot="title">示例:</template>
       <template slot="content">
@@ -19,7 +19,7 @@
 <script>
 import BaseTemplete from "@/components/BaseTemplete";
 import { MarkdownPreview } from "vue-meditor";
-import { formatPrice } from "library/index.js";
+import { filterPriceToFen } from "library/index.js";
 import readme from "./index.md";
 import table from "./table.md";
 export default {
@@ -29,7 +29,7 @@ export default {
   },
   computed: {
     price(){
-      return formatPrice(this.value)
+      return filterPriceToFen(this.value)
     }
   },
   data() {
