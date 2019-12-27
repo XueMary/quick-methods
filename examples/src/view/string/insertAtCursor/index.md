@@ -12,9 +12,8 @@
     methods: {
       handle(){
         let element = document.querySelector('#textarea')
-        let target = element.value
         let string = 'hello'
-        element.value = insertAtCursor(element, target, string)
+        element.value = insertAtCursor(element, string)
       }
     }
   }

@@ -14,12 +14,14 @@
         <MarkdownPreview :initialValue="readme" v-highlight="readme"/>
       </template>
     </BaseTemplete>
+    <MarkdownPreview :initialValue="table" v-highlight="table"/>
   </div>
 </template>
 
 <script>
 import { insertAtCursor } from "library/index.js";
 import readme from "./index.md";
+import table from "./table.md";
 import { MarkdownPreview } from "vue-meditor";
 import BaseTemplete from "@/components/BaseTemplete";
 export default {
@@ -29,15 +31,15 @@ export default {
   },
   data() {
     return {
-      readme
+      readme,
+      table,
+      string: 'hello'
     };
   },
   methods: {
     handle() {
       let element = document.querySelector("#textarea");
-      let target = element.value;
-      let string = "hello";
-      element.value = insertAtCursor(element, target, string);
+      element.value = insertAtCursor(element, this.string);
     }
   }
 };

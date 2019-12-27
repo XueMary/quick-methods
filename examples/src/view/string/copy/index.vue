@@ -12,6 +12,7 @@
         <MarkdownPreview :initialValue="readme" v-highlight="readme"/>
       </template>
     </BaseTemplete>
+    <MarkdownPreview :initialValue="table" v-highlight="table"/>
   </div>
 </template>
 
@@ -20,6 +21,7 @@ import BaseTemplete from "@/components/BaseTemplete";
 import { MarkdownPreview } from "vue-meditor";
 import { copy } from "library/index.js";
 import readme from "./index.md";
+import table from "./table.md";
 export default {
   components: {
     BaseTemplete,
@@ -28,7 +30,8 @@ export default {
   data() {
     return {
       value: "xue ji hong copy method",
-      readme
+      readme,
+      table
     };
   },
   methods: {
