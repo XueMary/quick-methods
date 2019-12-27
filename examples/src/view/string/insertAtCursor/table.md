@@ -3,7 +3,7 @@
 ## params
 参数名|描述|类型|可选值|默认值
 --|--|--|--|--
-element|需要将文本插入的元素|string|--|--
+element|需要将文本插入的元素|element|--|--
 value|需要插入的值|string|--|--
 
 ```
