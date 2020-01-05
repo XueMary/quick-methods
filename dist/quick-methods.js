@@ -110,9 +110,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  ..._String__WEBPACK_IMPORTED_MODULE_0__["default"],
+/* harmony default export */ __webpack_exports__["default"] = ({ ..._String__WEBPACK_IMPORTED_MODULE_0__["default"],
   ..._Number__WEBPACK_IMPORTED_MODULE_1__["default"],
   ..._Base__WEBPACK_IMPORTED_MODULE_2__["default"],
   ..._Dom__WEBPACK_IMPORTED_MODULE_3__["default"],
@@ -129,7 +127,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _insertAtCursor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
 
 
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   copy: _copy__WEBPACK_IMPORTED_MODULE_0__["default"],
   insertAtCursor: _insertAtCursor__WEBPACK_IMPORTED_MODULE_1__["default"]
@@ -141,41 +138,40 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-
 // 常用与点击按钮复制文本 
+
 /**
  * 
  * @param {string} string 
  */
 function copy(string) {
-
   if (typeof string !== 'string') {
-    console.error('Please enter a string parameter')
-    return false
+    console.error('Please enter a string parameter');
+    return false;
   }
 
-  let input = null
-  input = document.getElementById('quick-input-select')
+  let input = null;
+  input = document.getElementById('quick-input-select');
 
   if (input === null) {
-    input = document.createElement('input')
-    input.type = 'text'
-    input.id = 'quick-input-select'
+    input = document.createElement('input');
+    input.type = 'text';
+    input.id = 'quick-input-select';
   }
 
   input.style.left = "-1000px";
   input.style.position = "absolute";
+  document.body.appendChild(input);
+  input.value = string;
+  input.select();
 
-  document.body.appendChild(input)
-
-  input.value = string
-  input.select()
   if (document.execCommand) {
-    return document.execCommand('copy')
+    return document.execCommand('copy');
   } else {
-    console.error('Current browsers do not support exeCommand, please use chrome')
+    console.error('Current browsers do not support exeCommand, please use chrome');
   }
-  return false
+
+  return false;
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (copy);
@@ -186,30 +182,26 @@ function copy(string) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-
 // 常用与点击按钮复制文本 
+
 /**
  * 
- * @param {eleemnt} element 
+ * @param {element} element 
  * @param {string} value 
  */
 function insertAtCursor(element, target, value) {
-  if(value==undefined){
+  if (value == undefined) {
     // 方法写了多余的参数, 但以在使用,为了兼容老方法
     // 现在只需传入两个参数 element 与 value
-    value = target
-    target = element.value
+    value = target;
+    target = element.value;
   }
-  
+
   if (element.selectionStart || element.selectionStart === 0) {
     var startPos = element.selectionStart;
     var endPos = element.selectionEnd;
     var diff = endPos - startPos;
-    target =
-      target.substring(0, startPos) +
-      value +
-      target.substring(endPos, target.length);
-
+    target = target.substring(0, startPos) + value + target.substring(endPos, target.length);
     setTimeout(() => {
       element.focus();
       var point = endPos + value.length - diff;
@@ -219,6 +211,7 @@ function insertAtCursor(element, target, value) {
     target += value;
     element.focus();
   }
+
   return target;
 }
 
@@ -232,9 +225,7 @@ function insertAtCursor(element, target, value) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _price__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
 
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  ..._price__WEBPACK_IMPORTED_MODULE_0__["default"]
+/* harmony default export */ __webpack_exports__["default"] = ({ ..._price__WEBPACK_IMPORTED_MODULE_0__["default"]
 });
 
 /***/ }),
@@ -245,33 +236,38 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 // 加 ¥
 function formatPrice(price, symbol = "¥ ") {
-  return symbol + filterPrice(price)
-}
+  return symbol + filterPrice(price);
+} // 元转成分
 
-// 元转成分
+
 function filterPriceToFen(price, symbol) {
-  if(price===undefined){
-    return '0'
+  if (price === undefined) {
+    return '0';
   }
-  if(typeof price !== 'string'){
-    price = String(price)
-  }
-  if(symbol!==undefined){
-    price = price.replace(symbol, '')
-  }
-  return Number(price * 100).toFixed(0);
-}
 
-// 分转成元
+  if (typeof price !== 'string') {
+    price = String(price);
+  }
+
+  if (symbol !== undefined) {
+    price = price.replace(symbol, '');
+  }
+
+  return Number(price * 100).toFixed(0);
+} // 分转成元
 //小数位为0直接显示整数，有一位显示一位，有多位显示两位
+
+
 function filterPrice(data) {
-  if(typeof data === 'string'){
-    data = Number(data)
+  if (typeof data === 'string') {
+    data = Number(data);
   }
+
   if (typeof data !== 'number' || isNaN(data) === true) {
-    console.error('Please enter number type')
-    return '0'
+    console.error('Please enter number type');
+    return '0';
   }
+
   var yuan = Number(data / 100);
   var fixed0 = yuan.toFixed(0);
   var fixed1 = yuan.toFixed(1);
@@ -301,9 +297,9 @@ __webpack_require__.r(__webpack_exports__);
 function debounce(fn, time) {
   let t = new Date().getTime();
   let first = true;
+  return async function () {
+    let newTime = new Date().getTime();
 
-  return async function() {
-    let newTime = new Date().getTime()
     if (newTime - t > time || first) {
       first = false;
       await fn(...arguments);
@@ -316,7 +312,6 @@ function debounce(fn, time) {
   debounce
 });
 
-
 /***/ }),
 /* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -324,8 +319,6 @@ function debounce(fn, time) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scroll__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
-
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   bindScroll: _scroll__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -339,39 +332,44 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
 
+
 function loadFn(fn) {
   let loading = false;
+
   async function load() {
     if (loading === true) {
       return true;
     }
+
     loading = true;
     await fn(...arguments);
     loading = false;
   }
+
   return load;
 }
 
 async function scrollShare(el, fn, busy = false, diff = 100) {
-  if(busy===true){
-    return 
+  if (busy === true) {
+    return;
   }
+
   let height = el.offsetHeight;
   let scrollTop = el.scrollTop;
-
   let wrap = el.children[0];
   let wrapHeight = wrap.offsetHeight;
   let diffHeight = wrapHeight - height;
+
   if (diffHeight - scrollTop <= diff) {
     await fn(...arguments);
-  }  
+  }
 }
 
 function scrollHandle(sm = 20) {
   return _Base__WEBPACK_IMPORTED_MODULE_0__["default"].debounce(loadFn(scrollShare), sm);
 }
-let bindScroll = scrollHandle();
 
+let bindScroll = scrollHandle();
 /* harmony default export */ __webpack_exports__["default"] = (bindScroll);
 
 /***/ }),
@@ -381,17 +379,16 @@ let bindScroll = scrollHandle();
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getObject", function() { return getObject; });
-function getObject(option, value, key = 'label'){
-  let obj = null
-  option.some(item=>{
-    if(item[key]===value){
-      obj = item
-      return true
+function getObject(option, value, key = 'label') {
+  let obj = null;
+  option.some(item => {
+    if (item[key] === value) {
+      obj = item;
+      return true;
     }
-  })
-  return obj
+  });
+  return obj;
 }
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   getObject
 });

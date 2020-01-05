@@ -1,11 +1,12 @@
 {
-  "presets": [
+  "plugins": [
     [
-      "@babel/preset-env",
+      "@babel/plugin-transform-runtime",
       {
-        "targets": {
-          "node": "current"
-        }
+        "corejs": 2,
+        "helpers": true,
+        "regenerator": true,
+        "useESModules": false,
       }
     ]
   ]

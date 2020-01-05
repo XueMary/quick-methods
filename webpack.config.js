@@ -18,6 +18,17 @@ module.exports = {
     libraryExport: 'default',
     libraryTarget: 'umd'
   },
+
+  module: {
+    rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
+      }
+    ]
+  },
+
   plugins: [
     new CleanWebpackPlugin(),
   ],
